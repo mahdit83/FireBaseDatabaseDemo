@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
         txtDetails = (TextView) findViewById(R.id.txt_information);
         inputName = (EditText) findViewById(R.id.name);
-        inputPrice = (EditText) findViewById(R.id.email);
+        inputPrice = (EditText) findViewById(R.id.price);
         btnSave = (Button) findViewById(R.id.btn_save);
 
         mFirebaseInstance = FirebaseDatabase.getInstance();
@@ -134,7 +134,6 @@ public class MainActivity extends AppCompatActivity {
                 Log.e(TAG, "Car data is changed!" + "Id=" + car.getId() + " | " + car.getName() +
                         " | price: " + car.getPrice());
 
-                // Display newly updated name and email
                 txtDetails.setText("Id=" + car.getId() + " | name: " + car.getName() +
                         " | price: " + car.getPrice());
 
@@ -153,12 +152,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void updateCar(String name, String email) {
+    private void updateCar(String name, String price) {
         // updating the car via child nodes
         if (!TextUtils.isEmpty(name))
             mFirebaseDatabase.child(carId).child("name").setValue(name);
 
-        if (!TextUtils.isEmpty(email))
-            mFirebaseDatabase.child(carId).child("price").setValue(email);
+        if (!TextUtils.isEmpty(price))
+            mFirebaseDatabase.child(carId).child("price").setValue(price);
     }
 }
